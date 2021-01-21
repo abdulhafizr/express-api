@@ -6,6 +6,8 @@ const app = express();
 const PORT = process.env.PORT;
 const DB_CONNECTIONS = process.env.DB_CONNECTIONS;
 
+const User = require('./src/models/User');
+
 // Handle CORS POLICY
 app.use(cors());
 // Handle request.body 
@@ -16,9 +18,6 @@ app.use(express.urlencoded({extended: true}));
 mongoose.connect(DB_CONNECTIONS, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // auth Routes
-app.get('/api/user/login', (request, response) => {
-    response.send(`Login berhasil ${request.body.username}`)
-}) 
 
 // Check mongoDB connection
 let db = mongoose.connection;
