@@ -8,6 +8,8 @@ const DB_CONNECTIONS = process.env.DB_CONNECTIONS;
 
 // Handle CORS POLICY
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // MongoDB connection with mongoose
 mongoose.connect(DB_CONNECTIONS, {useNewUrlParser: true, useUnifiedTopology: true});
