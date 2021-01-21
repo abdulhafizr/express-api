@@ -6,7 +6,8 @@ const app = express();
 const PORT = process.env.PORT;
 const DB_CONNECTIONS = process.env.DB_CONNECTIONS;
 
-const User = require('./src/models/User');
+// Auth routes
+const authRoutes = require('./src/routes/authRoutes');
 
 // Handle CORS POLICY
 app.use(cors());
@@ -17,8 +18,6 @@ app.use(express.urlencoded({extended: true}));
 // MongoDB connection with mongoose
 mongoose.connect(DB_CONNECTIONS, {useNewUrlParser: true, useUnifiedTopology: true});
 
-// auth Routes
-
 // Check mongoDB connection
 let db = mongoose.connection;
 // Handle mongoDB connection on error
@@ -28,6 +27,10 @@ db.once('open', () => {
     console.log('Connection Database Successfully')
 })
 
+// All Routes
+app.use('/api/user', authRoutes);
+
+// Running Server in PORT
 app.listen(PORT, () => {
     console.log(`Server Running in ${PORT}`);
 })
