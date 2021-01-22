@@ -29,11 +29,7 @@ db.once('open', () => {
 })
 
 // All Routes
-app.use('/api/user', authRoutes);
-
-app.get('/blog', authUser, (request, response) => {
-    response.send('Blogs');
-})
+app.use('/api/auth', authRoutes);
 
 // Running Server in PORT
 app.listen(PORT, () => {
