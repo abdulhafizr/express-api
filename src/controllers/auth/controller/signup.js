@@ -14,7 +14,7 @@ module.exports = async (request, response) => {
 
     const hashPassword = await bcrypt.hash(password, await bcrypt.genSalt(10));
 
-    User.create({name, username, hashPassword, email}, (error, data) => {
+    User.create({name, username, password: hashPassword, email}, (error, data) => {
 
         if(error) return response.status(500).json({message: 'Internal Server Error', error});
 
