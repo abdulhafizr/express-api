@@ -6,6 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3003;
 const DB_CONNECTIONS = process.env.DB_CONNECTIONS || 'mongodb://localhost:27017/ahr_db';
 
+const authUser = require('./src/config/authUser');
 // Auth routes
 const authRoutes = require('./src/routes/authRoutes');
 
@@ -29,6 +30,10 @@ db.once('open', () => {
 
 // All Routes
 app.use('/api/user', authRoutes);
+
+app.get('/blog', authUser, (request, response) => {
+    response.send('Blogs');
+})
 
 // Running Server in PORT
 app.listen(PORT, () => {

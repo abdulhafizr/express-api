@@ -23,7 +23,7 @@ module.exports = async (request, response) => {
 
     response
     .status(200)
-    .header('auth-token')
+    .header('auth-token', token)
     .json({
         message: 'Login Successfully',
         data: {
