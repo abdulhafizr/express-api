@@ -8,6 +8,7 @@ const DB_CONNECTIONS = process.env.DB_CONNECTIONS || 'mongodb://localhost:27017/
 
 // Auth routes
 const authRoutes = require('./src/routes/authRoutes');
+const todoListRoutes = require('./src/routes/todoListRoutes');
 
 // Handle CORS POLICY
 app.use(cors());
@@ -28,7 +29,8 @@ db.once('open', () => {
 })
 
 // All Routes
-app.use('/api/auth', authRoutes);
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/todolist', todoListRoutes);
 
 // Running Server in PORT
 app.listen(PORT, () => {
