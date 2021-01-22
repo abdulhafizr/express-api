@@ -3,8 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
-const PORT = process.env.PORT;
-const DB_CONNECTIONS = process.env.DB_CONNECTIONS;
+const PORT = process.env.PORT || 3003;
+const DB_CONNECTIONS = process.env.DB_CONNECTIONS || 'mongodb://localhost:27017/ahr_db';
 
 // Auth routes
 const authRoutes = require('./src/routes/authRoutes');
