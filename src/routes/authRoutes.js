@@ -5,7 +5,14 @@ const app = express();
 const { signin, signup } = require('../controllers/auth');
 
 // Signin Route 
-app.post('/signin', signin);
+app.post(
+    '/signin',
+    [
+        body('email').isEmail(),
+        body('password').isLength({min: 6})
+    ],
+    signin
+);
 
 // Signup Route
 app.post(
