@@ -1,6 +1,6 @@
 const TodoList = require('../../../models/TodoList');
 
-module.exports = async (request, response) => {
+module.exports = (request, response) => {
     const todoId = request.params.todoId;
 
     if(!todoId) return response.status(400).json({
