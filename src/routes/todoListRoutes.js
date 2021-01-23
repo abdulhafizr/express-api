@@ -19,11 +19,12 @@ app.put('/:todoId',
     [
         body('title').isLength({min: 1})
     ],
+    authUser,
     update
 );
 
-app.get('/:todoId', show);
+app.get('/:todoId', authUser, show);
 
-app.delete('/:todoId', destroy);
+app.delete('/:todoId', authUser, destroy);
 
 module.exports = app;
