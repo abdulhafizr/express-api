@@ -3,7 +3,7 @@ const { body } = require('express-validator');
 const authUser = require('../config/authUser');
 const app = express();
 
-const { store, index, update } = require('../controllers/todolist');
+const { store, index, update, show } = require('../controllers/todolist');
 
 app.post('/',
     [
@@ -21,5 +21,7 @@ app.put('/:todoId',
     ],
     update
 );
+
+app.get('/:todoId', show);
 
 module.exports = app;
