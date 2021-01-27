@@ -25,7 +25,7 @@ let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection Database Error!'));
 // Handle mongoDB connection on success
 db.once('open', () => {
-    console.log('Connection Database Successfully')
+    console.log('Connection Database Successfully!')
 })
 
 // All Routes
